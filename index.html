@@ -1979,169 +1979,118 @@
             object-position: center;
         }
 
+.slider-container {
+            position: relative;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 500px;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .slide-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            background: rgba(0,0,0,0.6);
             color: white;
             padding: 20px;
-            padding-top: 40px;
         }
-
+        
         .slide-content h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--school-yellow);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #ffcc00;
         }
-
-        .slide-content p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .bubble {
-            background-color: var(--school-blue);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-            transform: scale(0);
-            animation: bubblePop 0.5s forwards;
-            animation-delay: calc(var(--delay) * 0.2s);
-        }
-
-        @keyframes bubblePop {
-            0% { transform: scale(0); }
-            80% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .navigation {
+        
+        .nav-btn {
             position: absolute;
             top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
             transform: translateY(-50%);
-            z-index: 10;
-            padding: 0 15px;
-        }
-
-        .nav-btn {
-            background-color: rgba(255, 255, 255, 0.7);
-            color: var(--school-blue);
+            background: rgba(255,255,255,0.7);
+            color: #2c8dfb;
             border: none;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 10;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
+        
         .nav-btn:hover {
-            background-color: white;
-            transform: scale(1.1);
-            color: var(--school-green);
+            background: white;
+            transform: translateY(-50%) scale(1.1);
         }
-
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
         .thumbnails {
             display: flex;
-            background-color: var(--light-color);
-            padding: 15px;
-            overflow-x: auto;
-            scrollbar-width: none;
             justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
-
-        .thumbnails::-webkit-scrollbar {
-            display: none;
-        }
-
+        
         .thumbnail {
-            min-width: 100px;
+            width: 100px;
             height: 70px;
-            margin: 0 8px;
-            cursor: pointer;
-            border-radius: 8px;
+            border-radius: 5px;
             overflow: hidden;
-            position: relative;
-            transition: all 0.3s;
+            cursor: pointer;
             opacity: 0.7;
+            transition: all 0.3s;
             border: 3px solid transparent;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .thumbnail:hover {
+        
+        .thumbnail:hover, .thumbnail.active {
             opacity: 1;
             transform: translateY(-5px);
+            border-color: #2c8dfb;
         }
-
-        .thumbnail.active {
-            opacity: 1;
-            border-color: var(--school-green);
-            transform: scale(1.1);
-        }
-
+        
         .thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            padding: 15px;
-            background-color: var(--school-blue);
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #2c8dfb;
+            color: white;
+            border-radius: 10px;
         }
-
-        .page-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .page-dot.active {
-            background-color: white;
-            transform: scale(1.3);
-        }
-
-        .school-icon {
-            position: absolute;
-            font-size: 2rem;
-            color: var(--school-yellow);
-            opacity: 0;
-            animation: floatIcon 4s infinite;
-            animation-delay: calc(var(--delay) * 0.5s);
-            z-index: 5;
-        }
-
-        @keyframes floatIcon {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
+        
         @media (max-width: 768px) {
-            .main-slider {
+            .slider {
                 height: 350px;
             }
             
@@ -2149,12 +2098,14 @@
                 font-size: 1.4rem;
             }
             
-            .slide-content p {
-                font-size: 1rem;
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
             
             .thumbnail {
-                min-width: 70px;
+                width: 70px;
                 height: 50px;
             }
         }
@@ -2356,90 +2307,46 @@
       </div>
       <div class="imgschoolfront">
             <div class="slider-container">
-        <div class="header">
-            <i class="fas fa-school"></i> Our Wonderful School Life
-        </div>
-        <div class="main-slider">
-            <!-- Floating school icons -->
-            <i class="school-icon fas fa-book" style="top: 20%; left: 10%; --delay: 0"></i>
-            <i class="school-icon fas fa-seedling" style="top: 30%; left: 80%; --delay: 1"></i>
-            <i class="school-icon fas fa-microscope" style="top: 70%; left: 15%; --delay: 2"></i>
-            <i class="school-icon fas fa-paint-brush" style="top: 60%; left: 85%; --delay: 3"></i>
-            
-            <!-- Slide 1 - Classroom Learning -->
-            <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Students learning in classroom">
-                <div class="slide-content">
-                    <h3>Active Learning</h3>
-                    <p>Our students engage in interactive classroom activities that make learning fun and effective.</p>
-                    <div>
-                        <span class="bubble" style="--delay: 1"><i class="fas fa-chalkboard-teacher"></i> Interactive Lessons</span>
-                        <span class="bubble" style="--delay: 2"><i class="fas fa-users"></i> Group Work</span>
-                        <span class="bubble" style="--delay: 3"><i class="fas fa-lightbulb"></i> Creative Thinking</span>
+            <div class="slider">
+                <!-- Slide 1 - Classroom Learning -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Classroom learning">
+                    <div class="slide-content">
+                        <h3>Classroom Learning</h3>
+                        <p>Students engaged in interactive lessons and group activities</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 - Gardening -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1590698933947-a202b069a861?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="School gardening">
+                    <div class="slide-content">
+                        <h3>School Garden</h3>
+                        <p>Students learning about plants and sustainability</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 - Science -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Science experiment">
+                    <div class="slide-content">
+                        <h3>Science Experiments</h3>
+                        <p>Hands-on learning in our science lab</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 - Sports -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Sports day">
+                    <div class="slide-content">
+                        <h3>Sports Day</h3>
+                        <p>Annual sports competitions and team activities</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Slide 2 - Gardening -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1590698933947-a202b069a861?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Students gardening">
-                <div class="slide-content">
-                    <h3>Green Thumbs</h3>
-                    <p>Our gardening program teaches students about nature, sustainability, and healthy eating.</p>
-                    <div>
-                        <span class="bubble" style="--delay: 1"><i class="fas fa-seedling"></i> Plant Growth</span>
-                        <span class="bubble" style="--delay: 2"><i class="fas fa-recycle"></i> Sustainability</span>
-                        <span class="bubble" style="--delay: 3"><i class="fas fa-apple-alt"></i> Healthy Food</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 3 - Science Experiment -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Science experiment">
-                <div class="slide-content">
-                    <h3>Science Explorers</h3>
-                    <p>Hands-on experiments spark curiosity and develop critical thinking skills.</p>
-                    <div>
-                        <span class="bubble" style="--delay: 1"><i class="fas fa-flask"></i> Experiments</span>
-                        <span class="bubble" style="--delay: 2"><i class="fas fa-atom"></i> Discovery</span>
-                        <span class="bubble" style="--delay: 3"><i class="fas fa-brain"></i> Critical Thinking</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 4 - Sports Day -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Sports day">
-                <div class="slide-content">
-                    <h3>Sports & Fitness</h3>
-                    <p>Annual sports events promote teamwork, physical health, and school spirit.</p>
-                    <div>
-                        <span class="bubble" style="--delay: 1"><i class="fas fa-running"></i> Fitness</span>
-                        <span class="bubble" style="--delay: 2"><i class="fas fa-users"></i> Teamwork</span>
-                        <span class="bubble" style="--delay: 3"><i class="fas fa-trophy"></i> Achievement</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 5 - Art Class -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Art class">
-                <div class="slide-content">
-                    <h3>Creative Expression</h3>
-                    <p>Our art program encourages self-expression and develops fine motor skills.</p>
-                    <div>
-                        <span class="bubble" style="--delay: 1"><i class="fas fa-palette"></i> Creativity</span>
-                        <span class="bubble" style="--delay: 2"><i class="fas fa-hands"></i> Fine Motor Skills</span>
-                        <span class="bubble" style="--delay: 3"><i class="fas fa-smile"></i> Self-Expression</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="navigation">
-                <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
+            <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
         
         <div class="thumbnails">
@@ -2455,19 +2362,7 @@
             <div class="thumbnail" data-index="3">
                 <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sports">
             </div>
-            <div class="thumbnail" data-index="4">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Art">
-            </div>
         </div>
-        
-        <div class="pagination">
-            <div class="page-dot active" data-index="0"></div>
-            <div class="page-dot" data-index="1"></div>
-            <div class="page-dot" data-index="2"></div>
-            <div class="page-dot" data-index="3"></div>
-            <div class="page-dot" data-index="4"></div>
-        </div>
-    </div>
     </div>
       <br><br><div class="school-intro slide-up delay-1">
         <p>The Government Senior Secondary School in Dakoha is more than an educational institution - it's the foundation of our community's future. With a perfect blend of academic excellence and cultural values, we prepare students to excel in the modern world while staying rooted in their heritage.</p>
@@ -3435,133 +3330,65 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
         });
 
  document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
             const slides = document.querySelectorAll('.slide');
             const thumbnails = document.querySelectorAll('.thumbnail');
-            const pageDots = document.querySelectorAll('.page-dot');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             
-            let currentSlide = 0;
-
-            // Initialize slider
-            function initSlider() {
-                updateSlider();
-                
-                // Click events for thumbnails
-                thumbnails.forEach(thumb => {
-                    thumb.addEventListener('click', function() {
-                        currentSlide = parseInt(this.getAttribute('data-index'));
-                        updateSlider();
-                    });
-                });
-                
-                // Click events for dots
-                pageDots.forEach(dot => {
-                    dot.addEventListener('click', function() {
-                        currentSlide = parseInt(this.getAttribute('data-index'));
-                        updateSlider();
-                    });
-                });
-                
-                // Navigation buttons
-                prevBtn.addEventListener('click', function() {
-                    navigate(-1);
-                });
-                
-                nextBtn.addEventListener('click', function() {
-                    navigate(1);
-                });
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'ArrowLeft') {
-                        navigate(-1);
-                    } else if (e.key === 'ArrowRight') {
-                        navigate(1);
-                    }
-                });
-                
-                // Touch events for mobile
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                document.querySelector('.main-slider').addEventListener('touchstart', function(e) {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, false);
-                
-                document.querySelector('.main-slider').addEventListener('touchend', function(e) {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, false);
-                
-                function handleSwipe() {
-                    if (touchEndX < touchStartX - 50) {
-                        // Swipe left
-                        navigate(1);
-                    } else if (touchEndX > touchStartX + 50) {
-                        // Swipe right
-                        navigate(-1);
-                    }
-                }
-            }
+            let currentIndex = 0;
+            const slideCount = slides.length;
             
-            function navigate(direction) {
-                // Set current slide to "prev" class before changing
-                slides[currentSlide].classList.add(direction === 1 ? 'prev' : 'next');
-                
-                currentSlide = (currentSlide + direction + slides.length) % slides.length;
-                updateSlider();
-                
-                // Remove transition classes after animation
-                setTimeout(() => {
-                    slides.forEach(slide => {
-                        slide.classList.remove('prev', 'next');
-                    });
-                }, 600);
-            }
-            
-            // Update slider display
+            // Update slider position
             function updateSlider() {
-                // Update main slides
-                slides.forEach((slide, index) => {
-                    slide.classList.remove('active');
-                    if (index === currentSlide) {
-                        slide.classList.add('active');
-                    }
-                });
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
-                // Update thumbnails
+                // Update active thumbnail
                 thumbnails.forEach((thumb, index) => {
-                    thumb.classList.remove('active');
-                    if (index === currentSlide) {
-                        thumb.classList.add('active');
-                        // Scroll thumbnail into view
-                        thumb.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'nearest',
-                            inline: 'center'
-                        });
-                    }
-                });
-                
-                // Update pagination dots
-                pageDots.forEach((dot, index) => {
-                    dot.classList.remove('active');
-                    if (index === currentSlide) {
-                        dot.classList.add('active');
-                    }
-                });
-                
-                // Trigger bubble animations
-                document.querySelectorAll('.bubble').forEach(bubble => {
-                    bubble.style.animation = 'none';
-                    void bubble.offsetWidth; // Trigger reflow
-                    bubble.style.animation = '';
+                    thumb.classList.toggle('active', index === currentIndex);
                 });
             }
             
-            // Initialize the slider
-            initSlider();
+            // Go to specific slide
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    goToSlide(index);
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+            
+            // Initialize slider
+            updateSlider();
         });
   </script>
 </body>
