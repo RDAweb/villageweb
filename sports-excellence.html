@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Excellence | Our School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+          --primary: #5e35b1;
+          --primary-dark: #4527a0;
+          --secondary: #ffab00;
+          --accent: #26a69a;
+          --light: #f5f5f5;
+          --dark: #212121;
+          --gray: #757575;
+          --white: #ffffff;
+          --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+          --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+          --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+          --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            background-color: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        /* Content Styles */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .image-content img:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Sections */
+        .section-title {
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+            display: inline-block;
+            margin-top: 0;
+        }
+        
+        .achievements-section, .facilities-section, .coaches-section {
+            margin-top: 40px;
+        }
+        
+        /* Achievements Grid */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .achievement-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .achievement-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .achievement-year {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Facilities List */
+        .facilities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .facility-tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .facility-tag:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Coaches Grid */
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+        
+        .coach-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .coach-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        
+        .coach-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .coach-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .coach-card:hover .coach-image img {
+            transform: scale(1.05);
+        }
+        
+        .coach-info {
+            padding: 20px;
+        }
+        
+        .coach-info h3 {
+            margin: 10px 0 5px;
+            color: var(--dark);
+        }
+        
+        .coach-sport {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-top: 50px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-item-hidden{
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #21212146;
+            opacity: 0.5;
+            z-index: 1;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .page-header {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sports Excellence Page Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Sports Excellence</h1>
+            <p>Developing champions through world-class training and facilities</p>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </header>
+        
+        <div class="content-section">
+            <div class="text-content">
+                <h2 class="section-title">Our Sports Legacy</h2>
+                <p>For over a decade, our institution has been at the forefront of sports education, producing exceptional athletes who have excelled at district, state, and national levels. Our comprehensive sports program focuses on holistic development, combining physical training with mental conditioning.</p>
+                
+                <p>We offer specialized coaching in multiple disciplines with infrastructure that meets competitive standards. Our alumni include professional athletes, Arjuna award nominees, and representatives in international competitions.</p>
+                
+                <div class="achievements-section">
+                    <h2 class="section-title">Notable Achievements</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <span class="achievement-year">2023</span>
+                            <h3>State Kabaddi Champions</h3>
+                            <p>Our senior boys team won the state championship for the third consecutive year, with two players selected for national trials.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-year">2022</span>
+                            <h3>National Athletics Medalists</h3>
+                            <p>Three of our students won medals at the School National Games in 100m, long jump, and javelin throw events.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-year">2021</span>
+                            <h3>District All-Sports Trophy</h3>
+                            <p>We were awarded the overall championship trophy for excellence across multiple sports disciplines.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-year">2020</span>
+                            <h3>International Representation</h3>
+                            <p>Alumni Priya Sharma represented India in the Asian Junior Athletics Championship in Japan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-content">
+                <img src="images/sportsf.jpg" alt="Our Sports Facilities">
+                
+                <div class="facilities-section">
+                    <h2 class="section-title">World-Class Facilities</h2>
+                    <div class="facilities-list">
+                        <span class="facility-tag">Olympic-size athletics track</span>
+                        <span class="facility-tag">Professional kabaddi court</span>
+                        <span class="facility-tag">Indoor basketball court</span>
+                        <span class="facility-tag">Swimming pool</span>
+                        <span class="facility-tag">Weight training gym</span>
+                        <span class="facility-tag">Sports science lab</span>
+                    </div>
+                </div>
+                
+                <div class="coaches-section">
+                    <h2 class="section-title">Our Expert Coaches</h2>
+                    <div class="coaches-grid">
+                        <div class="coach-card">
+                            <div class="coach-image">
+                                <img src="images/blankimage.jpg" alt="Coach Rajesh Kumar">
+                            </div>
+                            <div class="coach-info">
+                                <h3>Rajesh Kumar</h3>
+                                <p class="coach-sport">Kabaddi Head Coach</p>
+                                <p>Former national kabaddi player with 15+ years coaching experience</p>
+                            </div>
+                        </div>
+                        <div class="coach-card">
+                            <div class="coach-image">
+                                <img src="images/blankimage.jpg" alt="Coach Priya Singh">
+                            </div>
+                            <div class="coach-info">
+                                <h3>Pardeep Singh</h3>
+                                <p class="coach-sport">Athletics Coach</p>
+                                <p>Specialist in sprint training, produced 5 state champions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-section">
+            <h2 class="section-title">Sports Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-item-hidden">
+                        <img src="images/hidden.jpg" alt="Swimming Competition">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-hidden">
+                        <img src="images/hidden.jpg" alt="Swimming Competition">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-hidden">
+                        <img src="images/hidden.jpg" alt="Swimming Competition">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-hidden">
+                        <img src="images/hidden.jpg" alt="Swimming Competition">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
