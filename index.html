@@ -1912,7 +1912,8 @@
                 padding: 20px;
             }
         }
-                .slider-container {
+          
+        .slider-container {
             max-width: 1000px;
             width: 100%;
             position: relative;
@@ -3433,7 +3434,7 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
             }
         });
 
-             document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.slide');
             const thumbnails = document.querySelectorAll('.thumbnail');
             const pageDots = document.querySelectorAll('.page-dot');
@@ -3441,19 +3442,15 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
             const nextBtn = document.querySelector('.next-btn');
             
             let currentSlide = 0;
-            let slideInterval;
-            const slideDuration = 6000; // 6 seconds
-            
+
             // Initialize slider
             function initSlider() {
                 updateSlider();
-                startSlideTimer();
                 
                 // Click events for thumbnails
                 thumbnails.forEach(thumb => {
                     thumb.addEventListener('click', function() {
                         currentSlide = parseInt(this.getAttribute('data-index'));
-                        resetSlideTimer();
                         updateSlider();
                     });
                 });
@@ -3462,7 +3459,6 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
                 pageDots.forEach(dot => {
                     dot.addEventListener('click', function() {
                         currentSlide = parseInt(this.getAttribute('data-index'));
-                        resetSlideTimer();
                         updateSlider();
                     });
                 });
@@ -3514,7 +3510,6 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
                 slides[currentSlide].classList.add(direction === 1 ? 'prev' : 'next');
                 
                 currentSlide = (currentSlide + direction + slides.length) % slides.length;
-                resetSlideTimer();
                 updateSlider();
                 
                 // Remove transition classes after animation
@@ -3564,27 +3559,6 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no
                     bubble.style.animation = '';
                 });
             }
-            
-            // Auto slide timer functions
-            function startSlideTimer() {
-                slideInterval = setInterval(() => {
-                    navigate(1);
-                }, slideDuration);
-            }
-            
-            function resetSlideTimer() {
-                clearInterval(slideInterval);
-                startSlideTimer();
-            }
-            
-            // Pause on hover
-            document.querySelector('.main-slider').addEventListener('mouseenter', function() {
-                clearInterval(slideInterval);
-            });
-            
-            document.querySelector('.main-slider').addEventListener('mouseleave', function() {
-                resetSlideTimer();
-            });
             
             // Initialize the slider
             initSlider();
