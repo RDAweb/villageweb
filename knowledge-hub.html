@@ -1,0 +1,428 @@
+<!-- KNOWLEDGE HUB PAGE (knowledge-hub.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Hub | Our School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+          --primary: #5e35b1;
+          --primary-dark: #4527a0;
+          --secondary: #ffab00;
+          --accent: #26a69a;
+          --light: #f5f5f5;
+          --dark: #212121;
+          --gray: #757575;
+          --white: #ffffff;
+          --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+          --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+          --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+          --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            background-color: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        /* Content Styles */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-content img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .image-content img:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Sections */
+        .section-title {
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+            display: inline-block;
+            margin-top: 0;
+        }
+        
+        .features-section, .collection-section, .services-section {
+            margin-top: 40px;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Collection Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+        }
+        
+        /* Language Tabs */
+        .language-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .language-tab {
+            padding: 8px 20px;
+            background: var(--white);
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .language-tab.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .language-tab:hover:not(.active) {
+            background: var(--light);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-top: 50px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .page-header {
+                padding: 30px 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Knowledge Hub Page Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Knowledge Hub</h1>
+            <p>Where curiosity meets discovery in our vibrant learning space</p>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </header>
+        
+        <div class="content-section">
+            <div class="text-content">
+                <h2 class="section-title">Our Library</h2>
+                <p>The Knowledge Hub is the intellectual heart of our institution, offering a welcoming space for students to explore, learn, and grow. With over 5,000 carefully selected books across multiple languages and disciplines, we nurture a culture of reading and independent research.</p>
+                
+                <p>Our collection includes contemporary works, classic literature, reference materials, and digital resources, carefully curated to support our curriculum and stimulate young minds. The library serves as a quiet sanctuary for study and a collaborative space for group learning.</p>
+                
+                <div class="features-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Multilingual Collection</h3>
+                            <p>Books in Punjabi, Hindi, and English to celebrate our linguistic diversity and promote multilingual literacy.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h3>Digital Resources</h3>
+                            <p>Access to e-books, online journals, and educational databases to support modern research needs.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Reading Programs</h3>
+                            <p>Regular book clubs, author visits, and reading challenges to foster a love for literature.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>Research Support</h3>
+                            <p>Librarians available to help students with research projects and information literacy skills.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-content">
+                <img src="images/dakohalai.jpg" alt="Our School Library">
+                
+                <div class="collection-section">
+                    <h2 class="section-title">Collection Highlights</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Total Books</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1,200</div>
+                            <div class="stat-label">Punjabi Titles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1,500</div>
+                            <div class="stat-label">Hindi Titles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2,300</div>
+                            <div class="stat-label">English Titles</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-tabs">
+                        <div class="language-tab active">All</div>
+                        <div class="language-tab">Punjabi</div>
+                        <div class="language-tab">Hindi</div>
+                        <div class="language-tab">English</div>
+                    </div>
+                </div>
+                
+                <div class="services-section">
+                    <h2 class="section-title">Library Services</h2>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Book lending (2 week loan period)</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Reference assistance</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Computer workstations</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Quiet study areas</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Group study rooms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-section">
+            <h2 class="section-title">Library Spaces</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/hidden.jpg" alt="Reading Area">
+                    <div class="gallery-caption">Comfortable Reading Area</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/hidden.jpg" alt="Study Tables">
+                    <div class="gallery-caption">Study Tables</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/hidden.jpg" alt="Punjabi Section">
+                    <div class="gallery-caption">Punjabi Literature Section</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/hidden.jpg" alt="Digital Station">
+                    <div class="gallery-caption">Digital Research Station</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple tab functionality
+        const tabs = document.querySelectorAll('.language-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // Here you would typically filter content based on selection
+                // This is just UI demonstration without actual filtering
+            });
+        });
+    </script>
+</body>
+</html>
